@@ -1,0 +1,22 @@
+diff --git a/node_modules/unplugin-parcel-macros/unplugin-macros.js b/node_modules/unplugin-parcel-macros/unplugin-macros.js
+index ef202f2..f839d49 100644
+--- a/node_modules/unplugin-parcel-macros/unplugin-macros.js
++++ b/node_modules/unplugin-parcel-macros/unplugin-macros.js
+@@ -75,7 +75,8 @@ module.exports = createUnplugin(() => {
+             for (let asset of macroAssets) {
+               let hash = crypto.createHash('sha256');
+               hash.update(asset.content);
+-              let id = `${filePath}.macro-${hash.digest('hex')}.${asset.type}`;
++              let id = `file:\\\\${filePath}.macro-${hash.digest('hex')}.${asset.type}`;
++              console.log('id', id)
+               assets.set(id, asset);
+               currentAssets.push(id);
+               imports.push(`import "${id}";`);
+@@ -130,6 +131,7 @@ module.exports = createUnplugin(() => {
+       });
+ 
+       res.code += '\n' + imports.join('\n');
++      console.log('generated code block', res)
+       return res;
+     },
+     resolveId(id) {

@@ -10,10 +10,13 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "start": "webpack serve --hot --mode development"
+    "start": "webpack serve --hot --mode development",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-spectrum/s2": "^0.2.1-nightly.4979",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-loader": "^4.13.1"
